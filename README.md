@@ -10,8 +10,8 @@
 [![Maintainability](https://qlty.sh/badges/f983cb35-d208-4d2f-8872-03fb3e1205de/maintainability.svg)](https://qlty.sh/gh/alanmugiwara/projects/pypdfsawtext)
 [![Code Coverage](https://qlty.sh/badges/f983cb35-d208-4d2f-8872-03fb3e1205de/test_coverage.svg)](https://qlty.sh/gh/alanmugiwara/projects/pypdfsawtext)
 
-# PyPDF Text View
-PyPDF Text View é uma aplicação desktop escrita em Python que insere a tecnologia OCR (Optical Character Recognition – Reconhecimento Óptico de Caracteres) em documentos no formato PDF.
+# PyPDF Saw Text
+PyPDF Saw Text é uma aplicação desktop escrita em Python que insere a tecnologia OCR (Optical Character Recognition – Reconhecimento Óptico de Caracteres) em documentos no formato PDF.
 A ferramenta permite que o usuário selecione uma pasta contendo arquivos PDF e, de forma automatizada, converta todos os documentos encontrados em versões com texto pesquisável. E não há limite predefinido de arquivos: todos os PDFs válidos encontrados na pasta selecionada serão processados sequencialmente.
 ## 📥 Download
 
