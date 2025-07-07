@@ -21,7 +21,7 @@ O PyPDF Saw Text é uma ótima maneira de **tornar seus PDFs pesquisáveis sem e
   <img src="https://github.com/gokadzev/Musify/raw/master/repository_files/get-it-on-github.png" alt="Get it on GitHub" width="200"/>
 </a>
 
-- ✅ **Não é necessário ter Python instalado para executar a aplicação. O interpretador está incluso na aplicação!**
+- ✅ **Não é necessário ter Python instalado para executar a aplicação. O interpretador está incluso!**
 - ⚠️ **O Tesseract e Ghostscript já estão embutidos na pasta `bin/` da aplicação**.
 
 ## Funcionalidades
@@ -68,6 +68,11 @@ pip install -r requirements.txt
 [Ghostscript/GhostPDL 10.05.1](https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10051)  
 [tesseract-ocr/tesseract · v5.5.0.20241111](https://github.com/tesseract-ocr/tesseract/releases/tag/5.5.0)
 
+#### *GNU/Linux (Ubuntu/Debian) e derivados*
+```bash
+sudo apt install ghostscript && apt install tesseract-ocr tesseract-ocr-por -y
+```
+
 5. **Execute o Programa:**
 ```bash
 python main.py
@@ -92,6 +97,11 @@ pip install -r requirements.txt
 #### *Para Windows*
 [Ghostscript/GhostPDL 10.05.1](https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10051)  
 [tesseract-ocr/tesseract · v5.5.0.20241111](https://github.com/tesseract-ocr/tesseract/releases/tag/5.5.0)
+
+#### *Para GNU/Linux (Ubuntu/Debian) e derivados*
+```bash
+sudo apt install ghostscript && apt install tesseract-ocr tesseract-ocr-por -y
+```
 
 5.  **Navegue até o diretório /src:**
 ```bash
