@@ -14,18 +14,15 @@ if getattr(sys, 'frozen', False):
 else:
     base_path = os.path.dirname(os.path.abspath(__file__))
 
-# Garante que o Tesseract e o Ghostscript venham da pasta local "bin"
-bin_path = os.path.join(base_path, "bin")
-os.environ["PATH"] = bin_path + os.pathsep + os.environ.get("PATH", "")
+# No Windows, usa binários e tessdata locais, se não, usa o tesseract do sistema
+if platform.system() == "Windows":
+    bin_path = os.path.join(base_path, "bin")
+    os.environ["PATH"] = bin_path + os.pathsep + os.environ.get("PATH", "")
+    os.environ["TESSDATA_PREFIX"] = os.path.join(base_path, "tessdata")
+    os.environ["OCRMYPDF_TESSERACT"] = os.path.join(bin_path, "tesseract.exe")
+    os.environ["OCRMYPDF_GHOSTSCRIPT"] = os.path.join(bin_path, "gs.exe")
 
-# Define onde estão os dados de linguagem do Tesseract
-os.environ["TESSDATA_PREFIX"] = os.path.join(base_path, "tessdata")
-
-# Força o ocrmypdf a usar caminhos específicos:
-os.environ["OCRMYPDF_TESSERACT"] = os.path.join(bin_path, "tesseract.exe")
-os.environ["OCRMYPDF_GHOSTSCRIPT"] = os.path.join(bin_path, "gs.exe")
-
-# Inicializa as variáveis globais pxra evitar erro
+# Inicializa as variáveis globais pra evitar erro
 in_folder = ""
 out_folder = ""
 pdfs = []
@@ -82,13 +79,28 @@ def convert_pdfs():
     label_status.configure(text='Fazendo a mágica acontecer\nPor favor, aguarde...')
     label_status.pack(pady=(0, 10)) # espaçamento | texto
 
-    label_emoji = ctk.CTkLabel(
-    window,
-    text="🧙‍♂️",
-    font=("Segoe UI Emoji", 45) 
-    )
+    # Verifica se está rodando no Windows
+    is_windows = platform.system() == "Windows"
+    
+    # Define a fonte e o emoji com base no SO
+    emoji_font = "Segoe UI Emoji" if is_windows else "Noto Color Emoji"
+    emoji_text = "🧙‍♂️" if is_windows else "🧙"
 
-    label_emoji.pack(pady=(5, 5)) # espaçamento | emoji
+    # Cria o rótulo com emoji e fonte corretos
+    try:
+        label_emoji = ctk.CTkLabel(
+            window,
+            text=emoji_text,
+            font=(emoji_font, 45)
+        )
+    except Exception:
+        # Fallback com emoji simples
+        label_emoji = ctk.CTkLabel(
+            window,
+            text="🧙",
+            font=("Arial", 45)
+        )
+    label_emoji.pack(pady=(5, 5))
 
     spinner.pack(pady=(5)) 
     spinner.start()
